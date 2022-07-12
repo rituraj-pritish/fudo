@@ -1,5 +1,5 @@
 {
-  "name": "fashion-native",
+  "name": "fudo",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -18,7 +18,14 @@
     "react-native-web": "0.17.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.19.0",
+    "eslint-config-universe": "^11.0.0",
+    "prettier": "^2.7.1",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.67.6"
   },
   "private": true
 }

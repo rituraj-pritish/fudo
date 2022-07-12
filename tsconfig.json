@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {},
+  "extends": "expo/tsconfig.base",
+  "moduleResolution": "node",
+  "baseUrl": ".",
+  "paths": {
+    "@screens/*": ["src/screens/*"],
+    "@atoms": ["src/atoms"],
+    "@atoms/*": ["src/atoms/*"]
+  },
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
+}

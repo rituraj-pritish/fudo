@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "fashion-native",
-    "slug": "fashion-native",
+    "name": "fudo",
+    "slug": "fudo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
