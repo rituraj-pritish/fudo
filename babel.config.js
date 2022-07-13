@@ -9,6 +9,7 @@ module.exports = function (api) {
           alias: {
             '@screens': './src/screens',
             '@atoms': './src/atoms',
+            '@constants': './src/constants',
           },
         },
       ],

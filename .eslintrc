@@ -1,6 +1,7 @@
 {
   "extends": "universe/native",
   "rules": {
+    "prettier/prettier": "off",
     "object-curly-spacing": ["warn", "always"],
     "semi": ["warn", "never"],
     "no-multiple-empty-lines": ["error", { "max": 1 }],

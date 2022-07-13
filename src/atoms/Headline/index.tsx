@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text } from 'react-native'
 
 const Headline = ({ bold = true, level, children }) => {
   return (
@@ -11,8 +11,8 @@ const Headline = ({ bold = true, level, children }) => {
       >
         {children}
       </Text>
-    );
-};
+    )
+}
 
 const styles = StyleSheet.create({
   bold: {
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Headline;
+export default Headline

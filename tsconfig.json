@@ -4,9 +4,12 @@
   "moduleResolution": "node",
   "baseUrl": ".",
   "paths": {
+    "@screens": ["src/screens"],
     "@screens/*": ["src/screens/*"],
     "@atoms": ["src/atoms"],
-    "@atoms/*": ["src/atoms/*"]
+    "@atoms/*": ["src/atoms/*"],
+    "@constants": ["src/constants"],
+    "@constants/*": ["src/constants/*"]
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
