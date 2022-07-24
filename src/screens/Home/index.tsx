@@ -8,10 +8,10 @@ import { restaurants } from './mock'
 const Home = () => {
   return (
     <View>
+      <Filters />
       {restaurants.map((item) => (
         <RestaurantCard key={item.id} {...item} />
       ))}
-      <Filters />
     </View>
   )
 }

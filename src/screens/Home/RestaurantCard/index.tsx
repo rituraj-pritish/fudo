@@ -3,6 +3,7 @@ import React from 'react'
 import { ImageBackground, Pressable, StyleSheet, View } from 'react-native'
 
 import { Body, Caption, Headline } from '../../../atoms'
+import theme from '../../../constants/theme'
 import { Restaurant } from '../types'
 
 const RestaurantCard = ({
@@ -64,7 +65,7 @@ const RestaurantCard = ({
 const styles = StyleSheet.create({
   like: {
     borderRadius: 100,
-    backgroundColor: 'white',
+    backgroundColor: theme.white,
     width: 40,
     height: 40,
     alignItems: 'center',
@@ -81,14 +82,14 @@ const styles = StyleSheet.create({
     bottom: 16,
     paddingHorizontal: 12,
     paddingVertical: 4,
-    backgroundColor: '#5280E5'
+    backgroundColor: theme.cornFlowerBlue
   },
   discountBody: {
-    color: 'white',
+    color: theme.white,
     alignSelf: 'flex-start'
   },
   deliveryTime: {
-    backgroundColor: 'white',
+    backgroundColor: theme.white,
     width: 'auto',
     alignSelf: 'flex-start',
     justifyContent: 'center',
@@ -113,12 +114,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   rating: {
-    color: 'white'
+    color: theme.white
   },
   pressable: {
     marginBottom: 40,
     width: '100%',
-    shadowColor: 'black',
+    shadowColor: theme.black,
     shadowOffset: { height: 5, width: 0 },
     shadowOpacity: 0.4,
     shadowRadius: 10,
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     elevation: 7
   },
   forOne: {
-    color: '#868686'
+    color: theme.dimGray
   },
   top: {
     height: 180
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
   info: {
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    backgroundColor: 'white',
+    backgroundColor: theme.white,
     padding: 16,
     paddingBottom: 20
   },

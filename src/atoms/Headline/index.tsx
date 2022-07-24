@@ -1,13 +1,21 @@
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, TextProps } from 'react-native'
 
-const Headline = ({ bold = true, level, children }) => {
+type Props = {
+  bold?: boolean
+  level: 1 | 2 | 3 | 4 | 5 | 6,
+  children: React.ReactNode,
+} & TextProps
+
+const Headline = ({ bold = true, level, style, children, ...props }: Props) => {
   return (
       <Text 
         style={[
           bold && styles.bold,
-          styles[`level${level}`]
+          styles[`level${level}`],
+          style
         ]}
+        {...props}
       >
         {children}
       </Text>

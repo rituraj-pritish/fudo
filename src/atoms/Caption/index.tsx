@@ -20,7 +20,7 @@ const Caption = ({ children, level, bold = false, style, ...props }: Props) => {
 
 const styles = StyleSheet.create({
   caption: {
-    color: theme.caption
+    color: theme.dimGray
   },
   bold: {
     fontWeight: 'bold'
