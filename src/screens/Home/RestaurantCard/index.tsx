@@ -1,12 +1,15 @@
 import { Ionicons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ImageBackground, Pressable, StyleSheet, View } from 'react-native'
 
 import { Body, Caption, Headline } from '../../../atoms'
+import screens from '../../../constants/screens'
 import theme from '../../../constants/theme'
 import { Restaurant } from '../types'
 
 const RestaurantCard = ({
+  id,
   name,
   image,
   tags,
@@ -17,9 +20,13 @@ const RestaurantCard = ({
   discountUpto,
   distance
 }: Restaurant) => {
+  const navigation = useNavigation()
   const isLiked = false
   return (
-    <Pressable style={styles.pressable}>
+    <Pressable
+      style={styles.pressable}
+      onPress={() => navigation.navigate(screens.restaurant)}
+    >
       <View style={styles.top}>
         <ImageBackground
           source={{ uri: image }}
@@ -27,18 +34,22 @@ const RestaurantCard = ({
           style={styles.bgImage}
         >
           <Pressable style={styles.like}>
-            <Ionicons name={isLiked ? "heart-sharp" : 'heart-outline'} size={24} color='red' />
+            <Ionicons name={isLiked ? 'heart-sharp' : 'heart-outline'} size={24} color="red" />
           </Pressable>
-          <View style={styles.discount}>
-            <Body style={styles.discountBody} level={2} bold>
-              {discount}% OFF
-            </Body>
-            <Body style={styles.discountBody} level={2}>
-              Up to {discountUpto} 
-            </Body>
-          </View>
+          {discount && (
+            <View style={styles.discount}>
+              <Body style={styles.discountBody} level={2} bold>
+                {discount}% OFF
+              </Body>
+              <Body style={styles.discountBody} level={2}>
+                Up to {discountUpto}
+              </Body>
+            </View>
+          )}
           <View style={styles.deliveryTime}>
-            <Body level={2}>{deliveryTime} mins | {distance} km</Body>
+            <Body level={2}>
+              {deliveryTime} mins | {distance} km
+            </Body>
           </View>
         </ImageBackground>
       </View>
@@ -117,7 +128,7 @@ const styles = StyleSheet.create({
     color: theme.white
   },
   pressable: {
-    marginBottom: 40,
+    marginBottom: 24,
     width: '100%',
     shadowColor: theme.black,
     shadowOffset: { height: 5, width: 0 },
