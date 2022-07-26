@@ -3,27 +3,44 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StyleSheet, View } from 'react-native'
 
-import screens from './src/constants/screens'
 import theme from './src/constants/theme'
 import { Home } from './src/screens'
+import Order from './src/screens/Order'
 import Restaurant from './src/screens/Restaurant'
 import Search from './src/screens/Search'
 
 const queryClient = new QueryClient()
 
-const Stack = createNativeStackNavigator()
+export type StackParamList = {
+  Home: undefined
+  Search: undefined
+  Order: undefined
+  Restaurant: { restaurantId: number }
+}
+
+const Stack = createNativeStackNavigator<StackParamList>()
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends StackParamList {}
+  }
+}
 
 const Navigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName={screens.home}
+      initialRouteName='Home'
       screenOptions={{
-        headerShown: false
+        headerShown: false,
+        contentStyle: {
+          backgroundColor: theme.white
+        }
       }}
     >
-      <Stack.Screen name={screens.home} component={Home} />
-      <Stack.Screen name={screens.restaurant} component={Restaurant} />
-      <Stack.Screen name={screens.search} component={Search} />
+      <Stack.Screen name='Home' component={Home} />
+      <Stack.Screen name='Restaurant' component={Restaurant} />
+      <Stack.Screen name='Search' component={Search} />
+      <Stack.Screen name='Order' component={Order} />
     </Stack.Navigator>
   )
 }
@@ -43,7 +60,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.white,
     paddingTop: 50
   }
 })

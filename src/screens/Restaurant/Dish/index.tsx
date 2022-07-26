@@ -1,0 +1,142 @@
+import { Entypo, Feather } from '@expo/vector-icons'
+import React, { useState } from 'react'
+import { Image, StyleSheet, View } from 'react-native'
+
+import { Body, Button, Caption, Headline } from '../../../atoms'
+import theme from '../../../constants/theme'
+import { Dish as DishType } from '../types'
+
+const AddButton = () => {
+  const [count, setCount] = useState(0)
+  return count > 0 ? (
+    <View style={styles.counterButton}>
+      <Feather
+        name="minus"
+        size={24}
+        color={theme.white}
+        suppressHighlighting
+        onPress={() => setCount((c) => c - 1)}
+      />
+      <Headline level={6} style={styles.count} bold>{count}</Headline>
+      <Feather
+        name="plus"
+        size={24}
+        color={theme.white}
+        suppressHighlighting
+        onPress={() => setCount((c) => c + 1)}
+      />
+    </View>
+  ) : (
+    <Button type="secondary" style={styles.button} onPress={() => setCount(1)}>
+      ADD
+    </Button>
+  )
+}
+
+const Dish = ({ name, image, type, price, description, bestseller }: DishType) => {
+  return (
+    <View style={styles.wrapper}>
+      <View style={styles.leftSection}>
+        <View style={styles.header}>
+          <View style={[styles.type, styles[type]]}>
+            {type === 'veg' ? (
+              <View style={styles.vegDot} />
+            ) : (
+              <Entypo style={styles.nonVegTriangle} name="triangle-up" size={16} color="#CD0200" />
+            )}
+          </View>
+          {bestseller && (
+            <View style={styles.bestSeller}>
+              <Caption level={2} style={styles.bestSellerText} bold>
+                Bestseller
+              </Caption>
+            </View>
+          )}
+        </View>
+        <Body level={1}>{name}</Body>
+        <Body level={2}>{price}</Body>
+        <Caption level={1}>{description}</Caption>
+      </View>
+      <View>
+        <Image source={{ uri: image }} style={styles.image} />
+        <AddButton />
+      </View>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 16,
+    borderBottomColor: theme.silver,
+    borderBottomWidth: 0.5
+  },
+  leftSection: {
+    maxWidth: '60%'
+  },
+  header: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginBottom: 4
+  },
+  bestSeller: {
+    backgroundColor: theme.radicalRed,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+    marginLeft: 8
+  },
+  bestSellerText: {
+    color: theme.white
+  },
+  type: {
+    width: 16,
+    height: 16,
+    borderWidth: 1,
+    borderRadius: 4
+  },
+  veg: {
+    borderColor: '#027C01',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  'non-veg': {
+    borderColor: '#CD0200'
+  },
+  nonVegTriangle: {
+    marginTop: -2,
+    marginLeft: -1
+  },
+  vegDot: {
+    backgroundColor: '#027C01',
+    width: 8,
+    height: 8,
+    borderRadius: 5
+  },
+  image: {
+    width: 120,
+    height: 100,
+    borderRadius: 8
+  },
+  button: {
+    width: 120,
+    marginTop: 8
+  },
+  counterButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    width: 120,
+    marginTop: 8,
+    backgroundColor: theme.radicalRed,
+    borderRadius: 4
+  },
+  count: {
+    color: theme.white
+  }
+})
+
+export default Dish

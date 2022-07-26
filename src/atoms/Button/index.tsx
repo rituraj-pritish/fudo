@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pressable, PressableProps, StyleSheet, Text } from 'react-native'
+import { Pressable, PressableProps, StyleProp, StyleSheet, Text, ViewStyle } from 'react-native'
 
 import theme from '../../constants/theme'
 
@@ -7,17 +7,19 @@ type Props = {
   children: React.ReactNode
   disabled?: boolean
   fullWidth?: boolean
-  type: 'primary'
+  type: 'primary' | 'secondary',
+  style?: StyleProp<ViewStyle>
 } & PressableProps
 
-const Button = ({ children, disabled, fullWidth, type = 'primary', ...props }: Props) => {
+const Button = ({ children, disabled, fullWidth, type = 'primary', style, ...props }: Props) => {
   return (
     <Pressable 
       style={[
         styles.button, 
         fullWidth && styles.fullWidth, 
         styles[type],
-        disabled && styles.disabled
+        disabled && styles.disabled,
+        style
       ]}
       {...props}
     >
@@ -49,6 +51,15 @@ const styles = StyleSheet.create({
   },
   primaryText: {
     color: theme.white
+  },
+  secondary: {
+    backgroundColor: theme.snow,
+    borderColor: theme.radicalRed,
+    borderWidth: 1,
+    color: theme.radicalRed
+  },
+  secondaryText: {
+    color: theme.radicalRed
   },
   fullWidth: {
     flexGrow: 1

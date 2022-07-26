@@ -4,7 +4,6 @@ import React from 'react'
 import { ImageBackground, Pressable, StyleSheet, View } from 'react-native'
 
 import { Body, Caption, Headline } from '../../../atoms'
-import screens from '../../../constants/screens'
 import theme from '../../../constants/theme'
 import { Restaurant } from '../types'
 
@@ -25,7 +24,9 @@ const RestaurantCard = ({
   return (
     <Pressable
       style={styles.pressable}
-      onPress={() => navigation.navigate(screens.restaurant)}
+      onPress={() => navigation.navigate('Restaurant', {
+        restaurantId: id
+      })}
     >
       <View style={styles.top}>
         <ImageBackground

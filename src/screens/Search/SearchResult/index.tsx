@@ -3,15 +3,21 @@ import React from 'react'
 import { Image, Pressable, StyleSheet } from 'react-native'
 
 import { Body } from '../../../atoms'
-import screens from '../../../constants/screens'
 import theme from '../../../constants/theme'
 import { Restaurant } from '../../Home/types'
 
-const SearchResult = ({ logo, name }: Restaurant) => {
+const SearchResult = ({ logo, name, id }: Restaurant) => {
   const navigation = useNavigation()
   return (
-    <Pressable style={styles.wrapper} onPress={() => navigation.navigate(screens.restaurant)}>
-      <Image style={styles.logo} source={{ uri: logo }}/>
+    <Pressable
+      style={styles.wrapper}
+      onPress={() =>
+        navigation.navigate('Restaurant', {
+          restaurantId: id
+        })
+      }
+    >
+      <Image style={styles.logo} source={{ uri: logo }} />
       <Body level={1}>{name}</Body>
     </Pressable>
   )

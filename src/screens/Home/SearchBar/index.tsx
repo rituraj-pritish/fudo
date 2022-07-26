@@ -4,7 +4,6 @@ import React from 'react'
 import { Pressable, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native'
 
 import { Body } from '../../../atoms'
-import screens from '../../../constants/screens'
 import theme from '../../../constants/theme'
 
 type Props = {
@@ -25,7 +24,7 @@ const SearchBar = ({ forHome = false, onChange }: Props) => {
   return (
     <WrapperComponent
       style={styles.inputWrapper}
-      onPress={() => forHome && navigation.navigate(screens.search)}
+      onPress={() => forHome && navigation.navigate('Search')}
     >
       {icon}
       {forHome ? (
