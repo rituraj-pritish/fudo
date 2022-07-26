@@ -7,7 +7,8 @@ export type Restaurant = {
   forOne: number
   distance: number
   deliveryTime: number
-  image: string
   rating: number
   recentlyPlaced: number
+  image: string
+  logo: string
 }

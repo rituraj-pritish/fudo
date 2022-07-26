@@ -4,8 +4,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StyleSheet, View } from 'react-native'
 
 import screens from './src/constants/screens'
+import theme from './src/constants/theme'
 import { Home } from './src/screens'
 import Restaurant from './src/screens/Restaurant'
+import Search from './src/screens/Search'
 
 const queryClient = new QueryClient()
 
@@ -21,6 +23,7 @@ const Navigator = () => {
     >
       <Stack.Screen name={screens.home} component={Home} />
       <Stack.Screen name={screens.restaurant} component={Restaurant} />
+      <Stack.Screen name={screens.search} component={Search} />
     </Stack.Navigator>
   )
 }
@@ -40,7 +43,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: theme.white,
     paddingTop: 50
   }
 })

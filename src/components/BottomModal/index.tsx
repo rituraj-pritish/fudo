@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     top: -56
   },
   view: {
+    backgroundColor: theme.white,
     width: '100%',
     padding: 10,
     paddingBottom: 16

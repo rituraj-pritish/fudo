@@ -7,7 +7,7 @@ import SearchBar from '../SearchBar'
 const Header = () => {
   return (
     <View style={styles.wrapper}>
-      <SearchBar />
+      <SearchBar forHome />
       <Filters />
     </View>
   )

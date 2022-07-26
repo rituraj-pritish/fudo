@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <View style={styles.homeScreen}>
-      <Header />
+      <Header/>
       {isLoading ? (
         <View style={styles.spinnerWrapper}>
           <ActivityIndicator size="large" color={theme.radicalRed} />

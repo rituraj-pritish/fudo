@@ -1,4 +1,5 @@
 export default {
   home: 'HOME',
-  restaurant: 'RESTAURANT'
+  restaurant: 'RESTAURANT',
+  search: 'SEARCH'
 }
