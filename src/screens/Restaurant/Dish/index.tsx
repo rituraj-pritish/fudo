@@ -4,10 +4,12 @@ import { Image, StyleSheet, View } from 'react-native'
 
 import { Body, Button, Caption, Headline } from '../../../atoms'
 import theme from '../../../constants/theme'
+import useCart from '../../../hooks/useCart'
+import { toRupee } from '../../../utils/helperFunctions'
 import { Dish as DishType } from '../types'
 
-const AddButton = () => {
-  const [count, setCount] = useState(0)
+const AddButton = ({ onIncrement, onDecrement, initialCount = 0 }) => {
+  const [count, setCount] = useState(initialCount)
   return count > 0 ? (
     <View style={styles.counterButton}>
       <Feather
@@ -15,25 +17,44 @@ const AddButton = () => {
         size={24}
         color={theme.white}
         suppressHighlighting
-        onPress={() => setCount((c) => c - 1)}
+        onPress={() => {
+          setCount((c) => c - 1)
+          onDecrement()
+        }}
       />
-      <Headline level={6} style={styles.count} bold>{count}</Headline>
+      <Headline level={6} style={styles.count} bold>
+        {count}
+      </Headline>
       <Feather
         name="plus"
         size={24}
         color={theme.white}
         suppressHighlighting
-        onPress={() => setCount((c) => c + 1)}
+        onPress={() => {
+          setCount((c) => c + 1)
+          onIncrement()
+        }}
       />
     </View>
   ) : (
-    <Button type="secondary" style={styles.button} onPress={() => setCount(1)}>
+    <Button
+      type="secondary"
+      style={styles.button}
+      onPress={() => {
+        setCount(1)
+        onIncrement()
+      }}
+    >
       ADD
     </Button>
   )
 }
 
-const Dish = ({ name, image, type, price, description, bestseller }: DishType) => {
+const Dish = (dish: DishType) => {
+  const { cart, addToCart, removeFromCart } = useCart()
+  const { name, image, type, price, description, bestseller, id } = dish
+  const itemQuantity = cart.find(item => item.id === id)?.quantity
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.leftSection}>
@@ -54,12 +75,16 @@ const Dish = ({ name, image, type, price, description, bestseller }: DishType) =
           )}
         </View>
         <Body level={1}>{name}</Body>
-        <Body level={2}>{price}</Body>
+        <Body level={2}>{toRupee(price)}</Body>
         <Caption level={1}>{description}</Caption>
       </View>
       <View>
         <Image source={{ uri: image }} style={styles.image} />
-        <AddButton />
+        <AddButton
+          onIncrement={() => addToCart(dish)}
+          onDecrement={() => removeFromCart(id)}
+          initialCount={itemQuantity}
+        />
       </View>
     </View>
   )
