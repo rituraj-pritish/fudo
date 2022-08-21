@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
   filters: {
     marginHorizontal: -10,
     paddingHorizontal: 10,
+    marginTop: 12,
     marginBottom: 16
   },
   filter: {

@@ -29,7 +29,7 @@ declare global {
 const Navigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName='Order'
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         contentStyle: {
@@ -37,10 +37,10 @@ const Navigator = () => {
         }
       }}
     >
-      <Stack.Screen name='Home' component={Home} />
-      <Stack.Screen name='Restaurant' component={Restaurant} />
-      <Stack.Screen name='Search' component={Search} />
-      <Stack.Screen name='Order' component={Order} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Restaurant" component={Restaurant} />
+      <Stack.Screen name="Search" component={Search} />
+      <Stack.Screen name="Order" component={Order} />
     </Stack.Navigator>
   )
 }
