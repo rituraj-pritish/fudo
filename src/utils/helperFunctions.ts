@@ -1,3 +1,3 @@
 export const toRupee = (amount: string | number) => {
-  return `₹${amount}`
+  return `₹${Number(amount).toFixed(2)}`
 }

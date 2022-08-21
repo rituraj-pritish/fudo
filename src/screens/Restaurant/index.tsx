@@ -41,15 +41,18 @@ const CartOverview = () => {
 const Restaurant = () => {
   const route = useRoute<RouteProp<StackParamList, 'Restaurant'>>()
   const { restaurantId } = route.params
-  const { data } = useQuery(['restaurant', restaurantId], () => getRestaurantDetails(restaurantId))
+  const { data } = useQuery(
+    ['restaurant', restaurantId], 
+    () => getRestaurantDetails(restaurantId)
+  )
 
   if (!data) return <ActivityIndicator />
   return (
     <View style={styles.wrapper}>
       <Overview {...data} />
-      <ScrollView style={styles.dishes}>
+      <ScrollView style={styles.dishes} showsVerticalScrollIndicator={false}>
         {data.dishes.map((dish) => (
-          <Dish {...dish} />
+          <Dish key={dish.id} {...dish} />
         ))}
       </ScrollView>
       <CartOverview />
@@ -59,18 +62,13 @@ const Restaurant = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    flexGrow: 1,
-    position: 'relative'
+    flex: 1,
   },
   dishes: {
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   footerWrapper: {
-    position: 'absolute',
     justifyContent: 'center',
-    top: '90%',
-    bottom: 0,
-    width: '100%',
     minHeight: 70,
     backgroundColor: theme.white,
     paddingHorizontal: 16

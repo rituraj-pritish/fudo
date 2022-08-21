@@ -29,7 +29,7 @@ declare global {
 const Navigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName='Home'
+      initialRouteName='Order'
       screenOptions={{
         headerShown: false,
         contentStyle: {

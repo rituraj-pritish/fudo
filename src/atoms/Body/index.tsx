@@ -8,7 +8,7 @@ type Props = {
 
 const Body = ({ bold, level, style, children, ...props }: Props) => {
   return (
-    <Text style={[bold && styles.bold, styles[`level${level}`], style]} {...props}>
+    <Text style={[styles[`level${level}`], bold && styles.bold, style]} {...props}>
       {children}
     </Text>
   )
@@ -16,13 +16,15 @@ const Body = ({ bold, level, style, children, ...props }: Props) => {
 
 const styles = StyleSheet.create({
   bold: {
-    fontWeight: 'bold'
+    fontWeight: '600'
   },
   level1: {
-    fontSize: 16
+    fontSize: 16,
+    fontWeight: '400'
   },
   level2: {
-    fontSize: 14
+    fontSize: 14,
+    fontWeight: '400'
   }
 })
 

@@ -10,6 +10,8 @@ export type Dish = {
   image: string
 }
 
+export type CartDish = Dish & { quantity: number }
+
 export type RestaurantDetails = {
   id: string
   name: string
